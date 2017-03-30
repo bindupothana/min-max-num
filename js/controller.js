@@ -2,29 +2,36 @@ var app=angular.module('numApp',[]);
 app.controller('numCtrl',function($scope){
 	$scope.number=function(num){
 		// $scope.printNumber='hi';
-		console.log("sdf",$scope.printNumber)
+		// console.log("sdf",$scope.printNumber)
 
 		
-   var enternum =  JSON.parse(localStorage.getItem('enternum'));
-   console.log(angular.copy());
-           if(enternum == null){
-           enternum = [];
+   $scope.enternum =  JSON.parse(localStorage.getItem('$scope.enternum'));
+           if($scope.enternum == null){
+           $scope.enternum = [];
             }
 
-    enternum.push(num);
-    console.log(angular.copy(enternum));
-    return localStorage.setItem('enternum', JSON.stringify(enternum));
-    $scope.result=angular.copy(enternum)
+   $scope.enternum.push(num);
+    console.log(angular.copy($scope.enternum));
+    return localStorage.setItem('$scope.enternum', JSON.stringify($scope.enternum));
+    $scope.result=angular.copy($scope.enternum)
    }
 
 
+  $scope.showResult=function(){
 
-	
-	   $scope.showResult=function(){
+    var sum = 0; 
+    for(var i = 0; i < $scope.avgData; i++){
+    	console.log("jhk",$scope.avgData)
+     sum =sum+ parseInt($scope.avgData[i], 10); 
+    }
 
-	   }
-    
-   
+    var avg = sum/$scope.avgData;
+
+    return avg; 
+};
+
+
+	   
 
 	
 });
