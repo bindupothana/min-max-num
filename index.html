@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="numApp">
+<head>
+	<title></title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+    <script src="js/controller.js"></script>
+
+
+</head>
+<body>
+<div ng-controller="numCtrl">
+
+ <div>
+Enter Number:<input type="number" ng-model="num" />
+<button class="btn-primary" type="submit"  ng-click="number(num)">add</button>
+<div ng-repeat=" output in result track by $index"> {{output}}</div>
+<br/><span ng-bind = "num">{{output}}</span>
+<!--<br/><button class="btn-primary" type="submit"  ng-click="showResult()">Result</button></br>-->
+</div>
+
+
+
+
+</body>
+</html>
