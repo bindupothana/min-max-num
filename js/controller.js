@@ -7,59 +7,71 @@ app.controller('numCtrl',function($scope){
             $scope.enternum = [];
             }
     $scope.enternum.push(num);
-    console.log(angular.copy($scope.enternum));
+    console.log("print",angular.copy($scope.enternum));
     return localStorage.setItem('$scope.enternum', JSON.stringify($scope.enternum));
-    $scope.result=angular.copy($scope.enternum)
+    $scope.result=($scope.enternum)
    }
 
 
-  $scope.showResult=function(enternum){
-	  	if($scope.min==0 && $scope.max==0){
-	  		 $scope.min=enternum;
-	         $scope.max=enternum;
+  $scope.showResult=function(){
+  	$scope.result=[];
 
-	  	}
-	  	else{
-	            if($scope.min>enternum){
-	            	console.log("hjkl",$scope.min)
-	                $scope.min=enternum;
-	            }
-	            else if($scope.max<enternum){
-	                $scope.max=enternum;
-	            }
-	        }
-   }
+	  	// $scope.min=0; 
+	  	 $scope.max=0;
+	  	//  $scope.sum=0;
+// 	  		 $scope.min=$scope.enternum;
+// 	         $scope.max=$scope.enternum;
+// }          
+           for(i=0;i<=$scope.enternum;i++){
+           	// console.log("hhh",$scope.enternum)
+           	// $scope.avg = $scope.sum/$scope.enternum;
+	           
+	           	if($scope.min>$scope.enternum[i]){
+	           		 $scope.min=angular.copy($scope.enternum[i]);
+	           		 console.log("kkkk",$scope.min)
+	           		}
+	           	else if($scope.max<$scope.enternum[i]){
+
+		                $scope.max=angular.copy($scope.enternum[i]);
+		            }
+	          	     console.log("hhh",$scope.max)
+
+	          		
+	          		
+
+           }
+           $scope.avg = $scope.sum/$scope.enternum;
+
+      }     
+
+
+
+	  	
 
 
 
 
-  	$scope.avgNumber=function(){
-     var sum = 0; 
-     for(var i = 0; i < $scope.avgData; i++){
+  	// $scope.avgNumber=function(){
+   //   var sum = 0; 
+   //   for(var i = 0; i < $scope.avgData; i++){
     
-      console.log("jhk",$scope.avgData)
-         }
-    var avg = sum/$scope.avgData;
-    return avg; 
-   };
+   //    console.log("jhk",$scope.avgData)
+   //       }
+   //  var avg = sum/$scope.avgData;
+   //  return avg; 
+   // };
  
 
-   $scope.repeatedNumbers=function(number){
-      $scope.obj={};
-       var repeats=[];
-       var length = number.length;
-      for(var i = 0; i < length; i++) {
-       console.log("gggg",number.length)
-       var strl = number.charAt(i)
-      $scope.obj[strl] = (isNaN($scope.obj[strl]) ? 1 : $scope.obj[strl] + 1);
-      }
-    }
-
-
-
-    
-
-	   
+   // $scope.repeatedNumbers=function(number){
+   //    $scope.obj={};
+   //     var repeats=[];
+   //     var length = number.length;
+   //    for(var i = 0; i < length; i++) {
+   //     console.log("gggg",number.length)
+   //     var strl = number.charAt(i)
+   //    $scope.obj[strl] = (isNaN($scope.obj[strl]) ? 1 : $scope.obj[strl] + 1);
+   //    }
+   //  }
 
 	
 });
