@@ -1,4 +1,4 @@
-'use strict';
+scope'use strict';
 
 var numApp = angular.module('numApp',['ui.router','ngMessages']);
  numApp.config(['$stateProvider', '$urlRouterProvider',function($stateProvider,$urlRouterProvider)
