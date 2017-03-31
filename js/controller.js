@@ -7,7 +7,6 @@ app.controller('numCtrl',function($scope){
             $scope.enternum = [];
             }
     $scope.enternum.push(num);
-    console.log("print",angular.copy($scope.enternum));
     return localStorage.setItem('$scope.enternum', JSON.stringify($scope.enternum));
    
    }
@@ -15,42 +14,46 @@ app.controller('numCtrl',function($scope){
 
   $scope.showResult=function(){
     $scope.message="Maximum Number is:";
-    $scope.message="Minimum Number is:";
-
-  	$scope.result=[];
-	  	$scope.min=0; 
+    $scope.Minimum="Minimum Number is:";
+    $scope.sumOfNumber="Sum of Numbers is:";
+    $scope.avgNumber="Average Number is:";
+    $scope.countingRepeated="Repeated Numbers is:";
+     
+       $scope.obj={};
+  	 
+	  	 $scope.min=0; 
 	  	 $scope.max=0;
+       $scope.sum=0;
+       $scope.avg=0;
 	  	
-// 	  		 $scope.min=$scope.enternum;
-// 	         $scope.max=$scope.enternum;
-// }          
-           for(i=0;i<=$scope.enternum.length;i++){
+           for(i=0;i< $scope.enternum.length;i++){
+            console.log("length",$scope.enternum.length)
+             $scope.strl = $scope.enternum[i];
+             console.log("strl",$scope.strl)
+             $scope.obj[$scope.strl] = (isNaN($scope.obj[$scope.strl]) ? 1 : $scope.obj[$scope.strl] + 1);
+              console.log("count", $scope.obj )
+
+             $scope.sum=angular.copy($scope.sum+$scope.enternum[i]);
+             console.log("sum",$scope.sum)
 	           
 	           	if($scope.min>$scope.enternum[i]){
-                  console.log("hhh",$scope.min)
+                  console.log("min",$scope.min)
 
 	           		 $scope.min=angular.copy($scope.enternum[i]);
-	           		 console.log("kkkk",$scope.min)
+	           		 console.log("min",$scope.min)
 	           		}
 	           	else if($scope.max<$scope.enternum[i]){
-                                   console.log("hhh",$scope.max)
-
-
 		                $scope.max=angular.copy($scope.enternum[i]);
+                    $scope.min=angular.copy($scope.enternum[i]);
 		            }
-
-              
-
-
-
-
-
-
-	          	     console.log("hhh",$scope.max)
+                    console.log("max",$scope.max)
+                   
 
            }
-           // $scope.avg = $scope.sum/$scope.enternum;
+             $scope.avg =angular.copy( $scope.sum/$scope.enternum.length);
+             console.log("avg",$scope.avg )  
 
+            
       }     
 
 
@@ -60,27 +63,7 @@ app.controller('numCtrl',function($scope){
 
 
 
-  	// $scope.avgNumber=function(){
-   //   var sum = 0; 
-   //   for(var i = 0; i < $scope.avgData; i++){
-    
-   //    console.log("jhk",$scope.avgData)
-   //       }
-   //  var avg = sum/$scope.avgData;
-   //  return avg; 
-   // };
- 
-
-   // $scope.repeatedNumbers=function(number){
-   //    $scope.obj={};
-   //     var repeats=[];
-   //     var length = number.length;
-   //    for(var i = 0; i < length; i++) {
-   //     console.log("gggg",number.length)
-   //     var strl = number.charAt(i)
-   //    $scope.obj[strl] = (isNaN($scope.obj[strl]) ? 1 : $scope.obj[strl] + 1);
-   //    }
-   //  }
+  	
 
 	
 });
